@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NgRedux } from "ng2-redux";
 import { IAppState } from './store';
 import { INCREMENTAR } from './actions';
+import { NgRedux, select } from "@angular-redux/store";
+
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { INCREMENTAR } from './actions';
 })
 export class AppComponent {
   title = 'app';
-  contador = 0;
+  @select() readonly counter$: Observable<number>;
 
   constructor(private ngRedux: NgRedux<IAppState>) {
   }
